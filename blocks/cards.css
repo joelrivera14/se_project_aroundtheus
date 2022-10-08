@@ -1,11 +1,11 @@
-.cards {
+.card {
   font-family: "inter", serif;
   font-size: 24px;
   line-height: 1.2;
   margin-top: 47px;
 }
 
-.card__list {
+.cards__list {
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(auto-fit, 282px);
@@ -14,7 +14,7 @@
   margin: 0px;
 }
 
-.card {
+.cards {
   display: flex;
   flex-direction: column;
   list-style: none;
