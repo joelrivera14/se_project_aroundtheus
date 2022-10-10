@@ -44,6 +44,11 @@
   grid-area: button;
   align-self: center;
   margin-left: 18px;
+  border: 1px solid #ffffff;
+}
+
+.profile__edit-button:hover {
+  opacity: 0.6;
 }
 
 .profile__add-button {
@@ -51,4 +56,9 @@
   width: 150px;
   height: 50px;
   margin-left: auto;
+  border: 2px solid #ffffff;
+}
+
+.profile__add-button:hover {
+  opacity: 0.6;
 }
