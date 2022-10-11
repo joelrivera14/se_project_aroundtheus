@@ -19,7 +19,7 @@
 }
 
 .profile__title {
-  font-family: "inter", serif;
+  font-family: "Inter-medium", "Times New Roman";
   font-weight: 500;
   font-size: 42px;
   line-height: 1.1;
@@ -28,7 +28,7 @@
 }
 
 .profile__description {
-  font-family: "inter", serif;
+  font-family: "Inter-regular", "Times New Roman";
   font-weight: 400;
   font-size: 18px;
   line-height: 1.2;
