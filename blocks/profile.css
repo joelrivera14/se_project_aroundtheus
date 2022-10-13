@@ -111,6 +111,8 @@
   .profile__edit-button {
     margin-left: 10px;
     align-self: end;
+    height: 18px;
+    width: 18px;
   }
 
   .profile__add-button {
