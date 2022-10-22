@@ -1,4 +1,4 @@
-const intialCards = [
+const initialCards = [
   {
     name: "Yosemite Valley",
     link: "../images/yosemite.png",
