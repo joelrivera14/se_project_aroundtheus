@@ -100,7 +100,12 @@
     <footer class="footer">
       <p class="footer__copyright">© 2022 Around The U.S.</p>
     </footer>
-    <div class="modal">
+    <div class="modal modal_opened">
+      <img
+        src="./images/closebutton.svg"
+        alt="close button"
+        class="modal__closebutton"
+      />
       <div class="modal__container">
         <h1 class="modal__title">Edit Profile</h1>
         <form class="modal__form">
@@ -121,7 +126,13 @@
                 placeholder="Description"
               />
             </label>
-            <button class="modal__button">Save</button>
+            <button class="modal__button">
+              <img
+                src="./images/savebutton.svg"
+                alt="save button"
+                class="modal__buttonimage"
+              />
+            </button>
           </fieldset>
           <fieldset class="modal__fieldset"></fieldset>
         </form>
