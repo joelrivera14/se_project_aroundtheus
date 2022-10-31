@@ -25,7 +25,7 @@
           </div>
           <button type="button" class="profile__add-button"></button>
         </section>
-        <section class="cards">
+        <!-- <section class="cards">
           <ul class="cards__list">
             <li class="card">
               <img
@@ -94,7 +94,7 @@
               </div>
             </li>
           </ul>
-        </section>
+        </section> -->
       </main>
     </div>
     <footer class="footer">
@@ -126,12 +126,26 @@
                 placeholder="Description"
               />
             </label>
-            <button class="modal__button">Save</button>
+            <button class="modal__button" type="submit">Save</button>
           </fieldset>
           <fieldset class="modal__fieldset"></fieldset>
         </form>
       </div>
     </div>
+    <template id="card-template">
+        <ul class="cards__list">
+            <li class="card">
+              <img
+                src=""
+                alt=""
+                class="card__image"
+              />
+              <div class="card__description">
+                <h2 class="card__title"></h2>
+                <button type="button" class="card__like-button"></button>
+              </div>
+            </li>
+    </template>
     <script src="./scripts/index.js"></script>
   </body>
 </html>
