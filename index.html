@@ -25,6 +25,9 @@
           </div>
           <button type="button" class="profile__add-button"></button>
         </section>
+        <section class="cards">
+          <ul class="cards__list"></ul>
+        </section>
         <!-- <section class="cards">
           <ul class="cards__list">
             <li class="card">
@@ -100,7 +103,7 @@
     <footer class="footer">
       <p class="footer__copyright">© 2022 Around The U.S.</p>
     </footer>
-    <div class="modal modal_opened">
+    <div class="modal">
       <img
         src="./images/closebutton.svg"
         alt="close button"
@@ -133,18 +136,13 @@
       </div>
     </div>
     <template id="card-template">
-        <ul class="cards__list">
-            <li class="card">
-              <img
-                src=""
-                alt=""
-                class="card__image"
-              />
-              <div class="card__description">
-                <h2 class="card__title"></h2>
-                <button type="button" class="card__like-button"></button>
-              </div>
-            </li>
+      <li class="card">
+        <img src="" alt="" class="card__image" />
+        <div class="card__description">
+          <h2 class="card__title"></h2>
+          <button type="button" class="card__like-button"></button>
+        </div>
+      </li>
     </template>
     <script src="./scripts/index.js"></script>
   </body>
