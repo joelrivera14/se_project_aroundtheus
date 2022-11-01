@@ -26,9 +26,9 @@ const initialCards = [
 ];
 
 const cardsList = document.querySelector(".cards__list");
-const modalBox = document.querySelector(".modal");
+const profileModalBox = document.querySelector(".modal");
 const profileEditButton = document.querySelector(".profile__edit-button");
-const modalCloseButton = document.querySelector(".modal__closebutton");
+const profileModalCloseButton = document.querySelector(".modal__closebutton");
 const profileEditForm = document.querySelector(".modal__form");
 const profileTitle = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__description");
@@ -37,18 +37,18 @@ const profileDescriptionInput = document.querySelector("#description");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 
-function openModal() {
-  modalBox.classList.add("modal_opened");
+function profileOpenModal() {
+  profileModalBox.classList.add("modal_opened");
 }
-profileEditButton.addEventListener("click", openModal);
+profileEditButton.addEventListener("click", profileOpenModal);
 
-function closeModal() {
+function profileCloseModal() {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
-  modalBox.classList.remove("modal_opened");
+  profileModalBox.classList.remove("modal_opened");
 }
 
-modalCloseButton.addEventListener("click", closeModal);
+profileModalCloseButton.addEventListener("click", profileCloseModal);
 
 profileEditForm.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -57,7 +57,7 @@ profileEditForm.addEventListener("submit", (event) => {
 
   profileTitle.textContent = titleValue;
   profileDescription.textContent = descriptionValue;
-  closeModal();
+  profileCloseModal();
 });
 
 function getCardElement(data) {
@@ -72,11 +72,16 @@ function getCardElement(data) {
   return cardElement;
 }
 
-for (let i = 0; i < initialCards.length; i++) {
-  cardsList.append(getCardElement(initialCards[i]));
+initialCards.forEach((cardData) => {
+  const card = getCardElement(cardData);
+  cardsList.append(card);
+});
 
-  // This is the same code as above
-  // const data = initialCards[i];
-  // const cardElement = getCardElement(data);
-  // cardsList.prepend(cardElement);
-}
+// for (let i = 0; i < initialCards.length; i++) {
+//   cardsList.append(getCardElement(initialCards[i]));
+
+//   // This is the same code as above
+//   // const data = initialCards[i];
+//   // const cardElement = getCardElement(data);
+//   // cardsList.prepend(cardElement);
+// }
