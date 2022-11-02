@@ -38,13 +38,13 @@ const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 
 function profileOpenModal() {
+  profileTitleInput.value = profileTitle.textContent;
+  profileDescriptionInput.value = profileDescription.textContent;
   profileModalBox.classList.add("modal_opened");
 }
 profileEditButton.addEventListener("click", profileOpenModal);
 
 function profileCloseModal() {
-  profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
   profileModalBox.classList.remove("modal_opened");
 }
 
