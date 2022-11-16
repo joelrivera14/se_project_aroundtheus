@@ -25,7 +25,6 @@ const initialCards = [
   },
 ];
 
-const cardsList = document.querySelector(".cards__list");
 const profileModalBox = document.querySelector(".modal");
 const profileEditButton = document.querySelector(".profile__edit-button");
 const profileModalCloseButton = document.querySelector(".modal__closebutton");
@@ -34,6 +33,11 @@ const profileTitle = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__description");
 const profileTitleInput = document.querySelector("#name");
 const profileDescriptionInput = document.querySelector("#description");
+const addModelBox = document.querySelector(".popup");
+const addModelButton = document.querySelector(".profile__add-button");
+const addModelCloseButton = document.querySelector(".popup__closebutton");
+const addModelForm = document.querySelector(".popup__form");
+const cardsList = document.querySelector(".cards__list");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 
@@ -47,8 +51,17 @@ profileEditButton.addEventListener("click", profileOpenModal);
 function profileCloseModal() {
   profileModalBox.classList.remove("modal_opened");
 }
-
 profileModalCloseButton.addEventListener("click", profileCloseModal);
+
+function addOpenModel() {
+  addModelBox.classList.add("popup_opened");
+}
+addModelButton.addEventListener("click", addOpenModel);
+
+function addCloseModel() {
+  addModelBox.classList.remove("popup_opened");
+}
+addModelCloseButton.addEventListener("click", addCloseModel);
 
 profileEditForm.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -58,6 +71,12 @@ profileEditForm.addEventListener("submit", (event) => {
   profileTitle.textContent = titleValue;
   profileDescription.textContent = descriptionValue;
   profileCloseModal();
+});
+
+addModelForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const addTitleValue = event.target.title.value;
+  const addLinkValue = event.target.link.value;
 });
 
 function getCardElement(data) {

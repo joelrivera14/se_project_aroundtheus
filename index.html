@@ -135,9 +135,45 @@
         </form>
       </div>
     </div>
+    <div class="popup">
+      <img
+        src="./images/closebutton.svg"
+        alt="close button"
+        class="popup__closebutton"
+      />
+      <div class="popup__container">
+        <p class="popup__title">New Place</p>
+        <form class="popup__form">
+          <fieldset class="popup__fieldset">
+            <label class="popup__label" for="title">
+              <input
+                class="popup__input"
+                type="text"
+                id="title"
+                name="title"
+                placeholder="Title"
+              />
+            </label>
+            <label class="popup__label" for="imagelink">
+              <input
+                class="popup__input"
+                type="text"
+                id="imagelink"
+                name="link"
+                placeholder="Image link"
+              />
+            </label>
+            <button class="popup__button" type="submit">Create</button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
     <template id="card-template">
       <li class="card">
         <img src="" alt="" class="card__image" />
+        <button class="card__trash-button" type="button">
+          <img src="./images/Trash.svg" />
+        </button>
         <div class="card__description">
           <h2 class="card__title"></h2>
           <button type="button" class="card__like-button"></button>

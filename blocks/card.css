@@ -9,6 +9,7 @@
   border-radius: 10px;
   overflow: hidden;
   width: 282px;
+  position: relative;
 }
 
 .card__image {
@@ -47,6 +48,16 @@
 
 .card__like-button:hover {
   opacity: 0.5;
+}
+
+.card__trash-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 20px;
+  height: 20px;
+  background: center no-repeat;
+  border: none;
 }
 
 @media screen and (max-width: 480px) {
