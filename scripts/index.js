@@ -37,6 +37,7 @@ const addModelBox = document.querySelector(".popup");
 const addModelButton = document.querySelector(".profile__add-button");
 const addModelCloseButton = document.querySelector(".popup__closebutton");
 const addModelForm = document.querySelector(".popup__form");
+
 const cardsList = document.querySelector(".cards__list");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
@@ -63,6 +64,10 @@ function addCloseModel() {
 }
 addModelCloseButton.addEventListener("click", addCloseModel);
 
+function like(likeButton) {
+  likeButton.classList.toggle("card__like-button_active");
+}
+
 profileEditForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const titleValue = event.target.name.value;
@@ -75,8 +80,13 @@ profileEditForm.addEventListener("submit", (event) => {
 
 addModelForm.addEventListener("submit", (event) => {
   event.preventDefault();
-  const addTitleValue = event.target.title.value;
-  const addLinkValue = event.target.link.value;
+  console.log(event);
+  const card = getCardElement({
+    link: event.target.link.value,
+    name: event.target.title.value,
+  });
+  cardsList.prepend(card);
+  addModelBox.classList.remove("popup_opened");
 });
 
 function getCardElement(data) {
@@ -84,10 +94,16 @@ function getCardElement(data) {
   const cardImage = cardElement.querySelector(".card__image");
   const cardTitle = cardElement.querySelector(".card__title");
 
+  const likeButton = cardElement.querySelector(".card__like-button");
+  likeButton.addEventListener("click", () => like(likeButton));
+
   cardImage.src = data.link;
   cardImage.alt = data.name;
   cardTitle.textContent = data.name;
-
+  const cardTrashButton = cardElement.querySelector(".card__trash-button");
+  cardTrashButton.addEventListener("click", () => {
+    cardElement.remove();
+  });
   return cardElement;
 }
 
