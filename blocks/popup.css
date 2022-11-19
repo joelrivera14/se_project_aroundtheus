@@ -82,6 +82,7 @@
   height: 50px;
   margin: 0;
   padding: 13.6px 125px 18.5px 124px;
+  cursor: pointer;
 }
 
 .popup__button:hover {
