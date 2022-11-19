@@ -180,11 +180,15 @@
         </div>
       </li>
     </template>
-    <div class="previewmodal">
-      <div class="previewmodal__container">
-        <button class="previewmodal__closebutton"></button>
-        <img class="previewmodal__image" src="" alt="" />
-        <p class="previewmodal__text"></p>
+    <div class="popup" id="preview-popup">
+      <img
+        src="./images/closebutton.svg"
+        alt="close button"
+        id="popup-closebutton"
+      />
+      <div class="popup__container" id="popup-container">
+        <img class="popup__image" src="" alt="" id="popup-image" />
+        <p class="popup__text" id="popup-text"></p>
       </div>
     </div>
     <script src="./scripts/index.js"></script>

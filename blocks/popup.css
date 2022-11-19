@@ -105,6 +105,21 @@
   cursor: pointer;
 }
 
+#popup-container {
+}
+
+#popup-closebutton {
+  height: 40px;
+  margin-left: 465px;
+  cursor: pointer;
+}
+
+#popup-image {
+}
+
+#popup-text {
+}
+
 @media screen and (max-width: 510px) {
   .popup__container {
     width: 282px;

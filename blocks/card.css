@@ -15,6 +15,7 @@
 .card__image {
   height: 282px;
   width: 100%;
+  cursor: pointer;
 }
 
 .card__description {

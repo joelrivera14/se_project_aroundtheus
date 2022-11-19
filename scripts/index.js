@@ -37,9 +37,10 @@ const addModalBox = document.querySelector(".popup");
 const addModalButton = document.querySelector(".profile__add-button");
 const addModalCloseButton = document.querySelector(".popup__closebutton");
 const addModalForm = document.querySelector(".popup__form");
-const imageModal = document.querySelector(".previewmodal__image");
-const imageText = document.querySelector("previewmodal__text");
-const imageModalWindow = document.querySelector(".previewmodal");
+const imageModal = document.querySelector("#popup-image");
+const imageText = document.querySelector("#popup-text");
+const imageModalWindow = document.querySelector("#preview-popup");
+const imageCloseButton = document.querySelector("#popup-closebutton");
 
 const cardsList = document.querySelector(".cards__list");
 const cardTemplate =
@@ -110,7 +111,10 @@ function getCardElement(data) {
     imageModal.src = data.link;
     imageModal.alt = data.name;
     imageText.textContent = data.name;
-    imageModalWindow.add();
+    imageModalWindow.classList.add("popup_opened");
+  });
+  imageCloseButton.addEventListener("click", () => {
+    imageModalWindow.classList.remove("popup_opened");
   });
   return cardElement;
 }
