@@ -108,11 +108,14 @@
 .popup__container_image {
   max-width: 75vw;
   max-height: 75vh;
+  position: relative;
 }
 
 #popup-closebutton {
   height: 40px;
-  margin-left: 465px;
+  position: absolute;
+  top: -45px;
+  right: -45px;
   cursor: pointer;
 }
 
