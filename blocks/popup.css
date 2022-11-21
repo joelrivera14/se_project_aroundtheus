@@ -16,14 +16,14 @@
 }
 
 .popup_opened {
-  display: flex;
   visibility: visible;
   opacity: 1;
   pointer-events: all;
   transition: visibility 0s, opacity 0.5s linear;
+  /* display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: column; */
 }
 
 .popup__container {

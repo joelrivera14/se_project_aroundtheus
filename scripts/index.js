@@ -102,8 +102,9 @@ addModalForm.addEventListener("submit", (event) => {
     name: event.target.title.value,
   });
   cardsList.prepend(card);
-  closeModal(addModalBox);
+  closeAddModal();
 });
+// form.reset();
 
 function getCardElement(data) {
   const cardElement = cardTemplate.cloneNode(true);
@@ -125,11 +126,12 @@ function getCardElement(data) {
     imageText.textContent = data.name;
     openModal(imageModalWindow);
   });
-  imageCloseButton.addEventListener("click", () => {
-    closeModal(imageModalWindow);
-  });
+
   return cardElement;
 }
+imageCloseButton.addEventListener("click", () => {
+  closeModal(imageModalWindow);
+});
 
 initialCards.forEach((cardData) => {
   const card = getCardElement(cardData);
