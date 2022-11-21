@@ -66,6 +66,10 @@
   cursor: pointer;
 }
 
+.card__trash-button:hover {
+  opacity: 0.5;
+}
+
 @media screen and (max-width: 480px) {
   .card {
     margin: 0;

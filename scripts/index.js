@@ -25,48 +25,60 @@ const initialCards = [
   },
 ];
 
-const profileModalBox = document.querySelector(".modal");
+const profileModalBox = document.querySelector("#modal");
 const profileEditButton = document.querySelector(".profile__edit-button");
-const profileModalCloseButton = document.querySelector(".modal__closebutton");
-const profileEditForm = document.querySelector(".modal__form");
+const profileModalCloseButton =
+  profileModalBox.querySelector("#modal-closebutton");
+const profileEditForm = profileModalBox.querySelector("#modal-form");
 const profileTitle = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__description");
 const profileTitleInput = document.querySelector("#name");
 const profileDescriptionInput = document.querySelector("#description");
-const addModalBox = document.querySelector(".popup");
+const addModalBox = document.querySelector("#add-popup");
 const addModalButton = document.querySelector(".profile__add-button");
-const addModalCloseButton = document.querySelector(".popup__closebutton");
-const addModalForm = document.querySelector(".popup__form");
+const addModalCloseButton = addModalBox.querySelector("#add-popupclosebutton");
+const addModalForm = addModalBox.querySelector("#add-popupform");
 const imageModal = document.querySelector("#popup-image");
 const imageText = document.querySelector("#popup-text");
 const imageModalWindow = document.querySelector("#preview-popup");
-const imageCloseButton = document.querySelector("#popup-closebutton");
+const imageCloseButton = imageModalWindow.querySelector("#popup-closebutton");
 
 const cardsList = document.querySelector(".cards__list");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 
-function profileOpenModal() {
+function openProfileModal() {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
-  profileModalBox.classList.add("modal_opened");
+  //   profileModalBox.classList.add("popup_opened");
+  openModal(profileModalBox);
 }
-profileEditButton.addEventListener("click", profileOpenModal);
+profileEditButton.addEventListener("click", openProfileModal);
 
-function profileCloseModal() {
-  profileModalBox.classList.remove("modal_opened");
+function closeProfileModal() {
+  //   profileModalBox.classList.remove("popup_opened");
+  closeModal(profileModalBox);
 }
-profileModalCloseButton.addEventListener("click", profileCloseModal);
+profileModalCloseButton.addEventListener("click", closeProfileModal);
 
-function addOpenModal() {
-  addModalBox.classList.add("popup_opened");
+function openAddModal() {
+  //   addModalBox.classList.add("popup_opened");
+  openModal(addModalBox);
 }
-addModalButton.addEventListener("click", addOpenModal);
+addModalButton.addEventListener("click", openAddModal);
 
-function addCloseModal() {
-  addModalBox.classList.remove("popup_opened");
+function closeAddModal() {
+  //   addModalBox.classList.remove("popup_opened");
+  closeModal(addModalBox);
 }
-addModalCloseButton.addEventListener("click", addCloseModal);
+addModalCloseButton.addEventListener("click", closeAddModal);
+
+function openModal(modal) {
+  modal.classList.add("popup_opened");
+}
+function closeModal(modal) {
+  modal.classList.remove("popup_opened");
+}
 
 function like(likeButton) {
   likeButton.classList.toggle("card__like-button_active");
@@ -79,7 +91,7 @@ profileEditForm.addEventListener("submit", (event) => {
 
   profileTitle.textContent = titleValue;
   profileDescription.textContent = descriptionValue;
-  profileCloseModal();
+  closeProfileModal();
 });
 
 addModalForm.addEventListener("submit", (event) => {
@@ -90,7 +102,7 @@ addModalForm.addEventListener("submit", (event) => {
     name: event.target.title.value,
   });
   cardsList.prepend(card);
-  addModalBox.classList.remove("popup_opened");
+  closeModal(addModalBox);
 });
 
 function getCardElement(data) {
@@ -111,10 +123,10 @@ function getCardElement(data) {
     imageModal.src = data.link;
     imageModal.alt = data.name;
     imageText.textContent = data.name;
-    imageModalWindow.classList.add("popup_opened");
+    openModal(imageModalWindow);
   });
   imageCloseButton.addEventListener("click", () => {
-    imageModalWindow.classList.remove("popup_opened");
+    closeModal(imageModalWindow);
   });
   return cardElement;
 }

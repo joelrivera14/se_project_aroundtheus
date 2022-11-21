@@ -31,6 +31,7 @@
   height: 330px;
   background-color: #ffffff;
   border-radius: 10px;
+  position: relative;
 }
 
 .popup__title {
@@ -97,7 +98,10 @@
 
 .popup__closebutton {
   height: 40px;
-  margin-left: 465px;
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  cursor: pointer;
 }
 
 .popup__closebutton:hover {

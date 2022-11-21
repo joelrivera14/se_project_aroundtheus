@@ -103,47 +103,49 @@
     <footer class="footer">
       <p class="footer__copyright">© 2022 Around The U.S.</p>
     </footer>
-    <div class="modal">
-      <img
-        src="./images/closebutton.svg"
-        alt="close button"
-        class="modal__closebutton"
-      />
-      <div class="modal__container">
-        <p class="modal__title">Edit Profile</p>
-        <form class="modal__form">
-          <fieldset class="modal__fieldset">
-            <label class="modal__label" for="name">
+    <div class="popup" id="modal">
+      <div class="popup__container">
+        <img
+          src="./images/closebutton.svg"
+          alt="close button"
+          class="popup__closebutton"
+          id="modal-closebutton"
+        />
+        <p class="popup__title">Edit Profile</p>
+        <form class="popup__form" id="modal-form">
+          <fieldset class="popup__fieldset">
+            <label class="popup__label" for="name">
               <input
-                class="modal__input"
+                class="popup__input"
                 type="text"
                 id="name"
                 placeholder="name"
               />
             </label>
-            <label class="modal__label" for="description">
+            <label class="popup__label" for="description">
               <input
-                class="modal__input"
+                class="popup__input"
                 type="text"
                 id="description"
                 placeholder="Description"
               />
             </label>
-            <button class="modal__button" type="submit">Save</button>
+            <button class="popup__button" type="submit">Save</button>
           </fieldset>
-          <fieldset class="modal__fieldset"></fieldset>
+          <fieldset class="popup__fieldset"></fieldset>
         </form>
       </div>
     </div>
-    <div class="popup">
-      <img
-        src="./images/closebutton.svg"
-        alt="close button"
-        class="popup__closebutton"
-      />
+    <div class="popup" id="add-popup">
       <div class="popup__container">
+        <img
+          src="./images/closebutton.svg"
+          alt="close button"
+          class="popup__closebutton"
+          id="add-popupclosebutton"
+        />
         <p class="popup__title">New Place</p>
-        <form class="popup__form">
+        <form class="popup__form" id="add-popupform">
           <fieldset class="popup__fieldset">
             <label class="popup__label" for="title">
               <input
