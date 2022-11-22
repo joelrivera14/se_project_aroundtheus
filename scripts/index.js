@@ -103,8 +103,8 @@ addModalForm.addEventListener("submit", (event) => {
   });
   cardsList.prepend(card);
   closeAddModal();
+  addModalForm.reset();
 });
-// form.reset();
 
 function getCardElement(data) {
   const cardElement = cardTemplate.cloneNode(true);
