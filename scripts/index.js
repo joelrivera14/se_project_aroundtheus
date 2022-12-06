@@ -63,6 +63,12 @@ profileModalCloseButton.addEventListener("click", closeProfileModal);
 function openAddModal() {
   //   addModalBox.classList.add("popup_opened");
   openModal(addModalBox);
+  console.log(addModalForm);
+  const inputElements = [
+    ...addModalForm.querySelectorAll(config.inputSelector),
+  ];
+  const submitButton = addModalForm.querySelector(config.submitButtonSelector);
+  toggleButtonState(inputElements, submitButton, config);
 }
 addModalButton.addEventListener("click", openAddModal);
 
