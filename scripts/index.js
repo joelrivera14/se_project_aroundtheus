@@ -42,7 +42,6 @@ const imageModal = document.querySelector("#popup-image");
 const imageText = document.querySelector("#popup-text");
 const imageModalWindow = document.querySelector("#preview-popup");
 const imageCloseButton = imageModalWindow.querySelector("#popup-closebutton");
-
 const cardsList = document.querySelector(".cards__list");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
@@ -73,11 +72,33 @@ function closeAddModal() {
 }
 addModalCloseButton.addEventListener("click", closeAddModal);
 
+function handleOverlayClose(evt) {
+  if (evt.target.classList.contains("popup")) {
+    closeModal(evt.target);
+  }
+}
+
+function isEscEvent(evt, close) {
+  if (evt.key === "Escape") {
+    const openPopup = document.querySelector(".popup_opened");
+    close(openPopup);
+  }
+}
+
+function handleEscUp(evt) {
+  evt.preventDefault();
+  isEscEvent(evt, closeModal);
+}
+
 function openModal(modal) {
   modal.classList.add("popup_opened");
+  modal.addEventListener("mousedown", handleOverlayClose);
+  document.addEventListener("keyup", handleEscUp);
 }
 function closeModal(modal) {
   modal.classList.remove("popup_opened");
+  modal.removeEventListener("mousedown", handleOverlayClose);
+  document.removeEventListener("keyup", handleEscUp);
 }
 
 function like(likeButton) {
@@ -86,8 +107,10 @@ function like(likeButton) {
 
 profileEditForm.addEventListener("submit", (event) => {
   event.preventDefault();
-  const titleValue = event.target.name.value;
-  const descriptionValue = event.target.description.value;
+  const titleInput = profileEditForm.querySelector("#popup-name");
+  const descriptionInput = profileEditForm.querySelector("#popup-description");
+  const titleValue = titleInput.value;
+  const descriptionValue = descriptionInput.value;
 
   profileTitle.textContent = titleValue;
   profileDescription.textContent = descriptionValue;
