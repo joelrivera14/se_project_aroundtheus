@@ -1,3 +1,5 @@
+import FormValidator from "./FormValidator.js";
+
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -45,6 +47,17 @@ const imageCloseButton = imageModalWindow.querySelector("#popup-closebutton");
 const cardsList = document.querySelector(".cards__list");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
+
+const formValidationConfig = {
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__button",
+  inactiveButtonClass: "popup__button_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__error_visible",
+};
+
+const addFormValidator = new FormValidator(formValidationConfig);
+addFormValidator.enableValidation();
 
 function openProfileModal() {
   profileTitleInput.value = profileTitle.textContent;
