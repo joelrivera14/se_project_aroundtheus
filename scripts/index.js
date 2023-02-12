@@ -78,11 +78,9 @@ function openAddModal() {
   //   addModalBox.classList.add("popup_opened");
   openModal(addModalBox);
   console.log(addModalForm);
-  const inputElements = [
-    ...addModalForm.querySelectorAll(config.inputSelector),
-  ];
-  const submitButton = addModalForm.querySelector(config.submitButtonSelector);
-  toggleButtonState(inputElements, submitButton, config);
+  const inputElements = [...addModalForm.querySelectorAll(this._inputSelector)];
+  const submitButton = addModalForm.querySelector(this._submitButtonSelector);
+  _toggleButtonState(inputElements, submitButton);
 }
 addModalButton.addEventListener("click", openAddModal);
 
