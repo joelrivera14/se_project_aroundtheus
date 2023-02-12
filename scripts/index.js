@@ -38,6 +38,7 @@ const profileTitleInput = document.querySelector("#popup-name");
 const profileDescriptionInput = document.querySelector("#popup-description");
 const addModalBox = document.querySelector("#add-popup");
 const addModalButton = document.querySelector(".profile__add-button");
+console.log(addModalBox);
 const addModalCloseButton = addModalBox.querySelector("#add-popupclosebutton");
 const addModalForm = addModalBox.querySelector("#add-popupform");
 const imageModal = document.querySelector("#popup-image");
@@ -56,9 +57,9 @@ const formValidationConfig = {
   errorClass: "popup__error_visible",
 };
 
-const addFormValidator = new FormValidator(formValidationConfig);
+const addFormValidator = new FormValidator(addModalForm, formValidationConfig);
 addFormValidator.enableValidation();
-
+console.log(addModalForm);
 function openProfileModal() {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
