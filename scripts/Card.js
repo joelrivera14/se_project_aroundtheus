@@ -29,7 +29,9 @@ export default class Card {
     return cardElement;
   }
 
-  _handleLikeClick() {}
+  _handleLikeClick() {
+    this.likeButton.classList.toggle("card__like-button_active");
+  }
 
   _handleTrashClick() {
     this._element.remove();
@@ -38,7 +40,9 @@ export default class Card {
   _handlePreviewClick() {}
 
   _setEventListeners() {
-    this.likeButton.addEventListener("click", () => like(likeButton));
+    this.likeButton.addEventListener("click", () =>
+      this._handleLikeClick(this.likebutton)
+    );
     this.cardTrashButton.addEventListener("click", () => {
       this._handleTrashClick();
     });
