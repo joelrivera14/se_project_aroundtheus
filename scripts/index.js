@@ -1,4 +1,5 @@
 import FormValidator from "./FormValidator.js";
+import Card from "./Card.js";
 
 const initialCards = [
   {
@@ -60,6 +61,11 @@ const formValidationConfig = {
 const addFormValidator = new FormValidator(addModalForm, formValidationConfig);
 addFormValidator.enableValidation();
 console.log(addModalForm);
+const profileFormValidator = new FormValidator(
+  profileEditForm,
+  formValidationConfig
+);
+profileFormValidator.enableValidation();
 function openProfileModal() {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
@@ -78,9 +84,11 @@ function openAddModal() {
   //   addModalBox.classList.add("popup_opened");
   openModal(addModalBox);
   console.log(addModalForm);
-  const inputElements = [...addModalForm.querySelectorAll(this._inputSelector)];
-  const submitButton = addModalForm.querySelector(this._submitButtonSelector);
-  _toggleButtonState(inputElements, submitButton);
+  const inputElements = [
+    ...addModalForm.querySelectorAll(config.inputSelector),
+  ];
+  const submitButton = addModalForm.querySelector(config.submitButtonSelector);
+  toggleButtonState(inputElements, submitButton);
 }
 addModalButton.addEventListener("click", openAddModal);
 
@@ -175,8 +183,10 @@ imageCloseButton.addEventListener("click", () => {
 });
 
 initialCards.forEach((cardData) => {
-  const card = getCardElement(cardData);
-  cardsList.append(card);
+  // const card = getCardElement(cardData);
+  const card = new Card(cardData, "#card-template");
+  card.generateCard();
+  cardsList.append(card.generateCard());
 });
 
 // for (let i = 0; i < initialCards.length; i++) {
