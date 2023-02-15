@@ -42,7 +42,7 @@ export default class Card {
     const imageText = document.querySelector("#popup-text");
     const imageModalWindow = document.querySelector("#preview-popup");
     imageModal.src = this._link;
-    imageModal.alt = data.name;
+    imageModal.alt = this._name;
     imageText.textContent = this._name;
     openModal(imageModalWindow);
   }
@@ -54,7 +54,9 @@ export default class Card {
     this.cardTrashButton.addEventListener("click", () => {
       this._handleTrashClick();
     });
-    this.cardImage.addEventListener("click", () => {});
+    this.cardImage.addEventListener("click", () => {
+      this._handlePreviewClick();
+    });
   }
 
   generateCard() {
