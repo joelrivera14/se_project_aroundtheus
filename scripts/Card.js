@@ -1,22 +1,8 @@
-function handleEscUp(evt) {
-  evt.preventDefault();
-  isEscEvent(evt, closeModal);
-}
-
-function openModal(modal) {
-  modal.classList.add("popup_opened");
-  modal.addEventListener("mousedown", handleOverlayClose);
-  document.addEventListener("keyup", handleEscUp);
-}
-function closeModal(modal) {
-  modal.classList.remove("popup_opened");
-  modal.removeEventListener("mousedown", handleOverlayClose);
-  document.removeEventListener("keyup", handleEscUp);
-}
+import { openModal } from "./Utils.js";
 
 export default class Card {
   constructor(data, cardSelector) {
-    this._name = data._name;
+    this._name = data.name;
     this._link = data.link;
 
     this._cardSelector = cardSelector;
@@ -66,6 +52,7 @@ export default class Card {
     this.cardImage = this._element.querySelector(".card__image");
     const cardTitle = this._element.querySelector(".card__title");
     this.cardImage.src = this._link;
+    this.cardImage.alt = this._name;
     cardTitle.textContent = this._name;
 
     this._setEventListeners();

@@ -34,34 +34,43 @@ export default class FormValidator {
     }
   }
 
-  _toggleButtonState(inputElements, submitButton) {
-    let foundInvalid = false;
-    inputElements.forEach((inputElement) => {
-      if (!inputElement.validity.valid) {
-        foundInvalid = true;
-      }
-    });
-    console.log(this._inactiveButtonClass, submitButton);
-    if (foundInvalid) {
-      submitButton.classList.add(this._inactiveButtonClass);
-      submitButton.disabled = true;
+  _checkFormValidity = () =>
+    this._inputElements.every((input) => input.validity.valid);
+
+  _toggleButtonState() {
+    const valid = this._checkFormValidity();
+    if (valid) {
+      this._submitButton.classList.remove(this._inactiveButtonClass);
+      this._submitButton.disabled = false;
     } else {
-      submitButton.classList.remove(this._inactiveButtonClass);
-      submitButton.disabled = false;
+      this._submitButton.classList.add(this._inactiveButtonClass);
+      this._submitButton.disabled = true;
     }
+
+    //
+    // const isValid = this.inputElements.some((inputElement)=> {
+    //     return inputElement.validity.valid
+    // })
+    // if (isValid) {
+    //     submitButton.classList.add(this._inactiveButtonClass);
+    //     submitButton.disabled = true;
+    //   } else {
+    //     submitButton.classList.remove(this._inactiveButtonClass);
+    //     submitButton.disabled = false;
+    //   }
   }
 
   _setEventListeners() {
-    const inputElements = [
+    this._inputElements = [
       ...this._formElement.querySelectorAll(this._inputSelector),
     ];
-    const submitButton = this._formElement.querySelector(
+    this._submitButton = this._formElement.querySelector(
       this._submitButtonSelector
     );
-    inputElements.forEach((inputElement) => {
+    this._inputElements.forEach((inputElement) => {
       inputElement.addEventListener("input", () => {
         this._checkInputValidity(inputElement);
-        this._toggleButtonState(inputElements, submitButton);
+        this._toggleButtonState(this._inputElements, this._submitButton);
       });
     });
   }

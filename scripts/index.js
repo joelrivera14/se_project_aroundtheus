@@ -1,5 +1,19 @@
 import FormValidator from "./FormValidator.js";
 import Card from "./Card.js";
+import {
+  openModal,
+  openAddModal,
+  openProfileModal,
+  closeModal,
+  closeAddModal,
+  closeProfileModal,
+  handleEscUp,
+  handleOverlayClose,
+  isEscEvent,
+  like,
+  getCardElement,
+  createCard,
+} from "./Utils.js";
 
 const initialCards = [
   {
@@ -84,11 +98,6 @@ function openAddModal() {
   //   addModalBox.classList.add("popup_opened");
   openModal(addModalBox);
   console.log(addModalForm);
-  const inputElements = [
-    ...addModalForm.querySelectorAll(config.inputSelector),
-  ];
-  const submitButton = addModalForm.querySelector(config.submitButtonSelector);
-  toggleButtonState(inputElements, submitButton);
 }
 addModalButton.addEventListener("click", openAddModal);
 
@@ -183,11 +192,14 @@ imageCloseButton.addEventListener("click", () => {
 });
 
 initialCards.forEach((cardData) => {
-  // const card = getCardElement(cardData);
-  const card = new Card(cardData, "#card-template");
-  card.generateCard();
-  cardsList.append(card.generateCard());
+  const card = createCard(cardData);
+  cardsList.append(card);
 });
+
+function createCard(data) {
+  const card = new Card(data, "#card-template");
+  return card.generateCard();
+}
 
 // for (let i = 0; i < initialCards.length; i++) {
 //   cardsList.append(getCardElement(initialCards[i]));
