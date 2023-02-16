@@ -1,19 +1,5 @@
 import FormValidator from "./FormValidator.js";
 import Card from "./Card.js";
-import {
-  openModal,
-  openAddModal,
-  openProfileModal,
-  closeModal,
-  closeAddModal,
-  closeProfileModal,
-  handleEscUp,
-  handleOverlayClose,
-  isEscEvent,
-  like,
-  getCardElement,
-  createCard,
-} from "./Utils.js";
 
 const initialCards = [
   {
