@@ -1,6 +1,5 @@
 import {
   handleOverlayClose,
-  isEscEvent,
   handleEscUp,
   openModal,
   closeModal,

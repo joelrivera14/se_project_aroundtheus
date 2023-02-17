@@ -4,16 +4,12 @@ export function handleOverlayClose(evt) {
   }
 }
 
-export function isEscEvent(evt, close) {
-  if (evt.key === "Escape") {
-    const openPopup = document.querySelector(".popup_opened");
-    close(openPopup);
-  }
-}
-
 export function handleEscUp(evt) {
   evt.preventDefault();
-  isEscEvent(evt, closeModal);
+  if (evt.key === "Escape") {
+    const openPopup = document.querySelector(".popup_opened");
+    closeModal(openPopup);
+  }
 }
 
 export function openModal(modal) {
