@@ -1,5 +1,6 @@
 import FormValidator from "./FormValidator.js";
 import Card from "./Card.js";
+import { openModal, closeModal } from "./utils.js";
 
 const initialCards = [
   {
@@ -69,6 +70,7 @@ profileFormValidator.enableValidation();
 function openProfileModal() {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
+  profileFormValidator.resetValidation();
   //   profileModalBox.classList.add("popup_opened");
   openModal(profileModalBox);
 }
@@ -81,6 +83,8 @@ function closeProfileModal() {
 profileModalCloseButton.addEventListener("click", closeProfileModal);
 
 function openAddModal() {
+  addModalForm.reset();
+  addFormValidator.resetValidation();
   //   addModalBox.classList.add("popup_opened");
   openModal(addModalBox);
   console.log(addModalForm);
@@ -92,35 +96,6 @@ function closeAddModal() {
   closeModal(addModalBox);
 }
 addModalCloseButton.addEventListener("click", closeAddModal);
-
-function handleOverlayClose(evt) {
-  if (evt.target.classList.contains("popup")) {
-    closeModal(evt.target);
-  }
-}
-
-function isEscEvent(evt, close) {
-  if (evt.key === "Escape") {
-    const openPopup = document.querySelector(".popup_opened");
-    close(openPopup);
-  }
-}
-
-function handleEscUp(evt) {
-  evt.preventDefault();
-  isEscEvent(evt, closeModal);
-}
-
-function openModal(modal) {
-  modal.classList.add("popup_opened");
-  modal.addEventListener("mousedown", handleOverlayClose);
-  document.addEventListener("keyup", handleEscUp);
-}
-function closeModal(modal) {
-  modal.classList.remove("popup_opened");
-  modal.removeEventListener("mousedown", handleOverlayClose);
-  document.removeEventListener("keyup", handleEscUp);
-}
 
 function like(likeButton) {
   likeButton.classList.toggle("card__like-button_active");

@@ -112,8 +112,11 @@
 }
 
 .popup__button_disabled {
-  border: 1px solid #000000;
-  background-color: rgba(229, 229, 229, 1);
+  color: #000;
+  opacity: 0.2;
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 2px;
   cursor: default;
 }
 

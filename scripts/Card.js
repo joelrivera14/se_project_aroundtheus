@@ -1,4 +1,10 @@
-import { openModal } from "./Utils.js";
+import {
+  handleOverlayClose,
+  isEscEvent,
+  handleEscUp,
+  openModal,
+  closeModal,
+} from "./utils.js";
 
 export default class Card {
   constructor(data, cardSelector) {
