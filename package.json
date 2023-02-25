@@ -1,0 +1,14 @@
+{
+  "name": "se_project_aroundtheus",
+  "version": "1.0.0",
+  "description": "this is practicums project four and it involves the use of grid aswell as trying to implement responsive design into the webpage! achieved through the use of % and max width. this project also incorporates the use of JavaScript to make the edit button actually functionable.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "package-name": "^0.1.0"
+  }
+}
