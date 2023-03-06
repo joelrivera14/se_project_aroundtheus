@@ -2,6 +2,8 @@ import FormValidator from "./FormValidator.js";
 import Card from "./Card.js";
 import { openModal, closeModal } from "./utils.js";
 import "../pages/index.css";
+import Popup from "./popup.js";
+import PopupWithForm from "./popupWithForm.js";
 
 const initialCards = [
   {
