@@ -81,9 +81,9 @@ addModal.setEventListeners();
 const imagepreviewModal = new Popup({ popupSelector: "#popup-image" });
 imagepreviewModal.setEventListeners();
 
-const editFormModal = new PopupWithForm("#modal-form", submitEditProfile);
+const editFormModal = new PopupWithForm("#modal-form", () => {});
 editFormModal.setEventListeners();
-const addFormModal = new PopupWithForm("#add-popupform", submitAddCard);
+const addFormModal = new PopupWithForm("#add-popupform");
 addFormModal.setEventListeners();
 
 function openProfileModal() {
