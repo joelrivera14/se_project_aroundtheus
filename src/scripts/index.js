@@ -5,7 +5,6 @@ import "../pages/index.css";
 import Popup from "./popup.js";
 import PopupWithForm from "./popupWithForm.js";
 import Section from "./section.js";
-import UserInfo from "../components/UserInfo.js";
 
 const initialCards = [
   {
@@ -76,17 +75,16 @@ profileFormValidator.enableValidation();
 
 /* -------------------------------- popups -------------------------------- */
 const editModal = new Popup({ popupSelector: "#modal" });
-editModal._setEventListeners();
+editModal.setEventListeners();
 const addModal = new Popup({ popupSelector: "#add-popup" });
-addModal._setEventListeners();
+addModal.setEventListeners();
 const imagepreviewModal = new Popup({ popupSelector: "#popup-image" });
-imagepreviewModal._setEventListeners();
+imagepreviewModal.setEventListeners();
 
-const editFormModal = new PopupForm("#modal-edit-profile", submitEditProfile);
-editFormModal._setEventListeners();
-const addFormModal = new PopupForm("#modal-add-card", submitAddCard);
-
-addFormModal._setEventListeners();
+const editFormModal = new PopupWithForm("#modal-form", submitEditProfile);
+editFormModal.setEventListeners();
+const addFormModal = new PopupWithForm("#add-popupform", submitAddCard);
+addFormModal.setEventListeners();
 
 function openProfileModal() {
   profileTitleInput.value = profileTitle.textContent;
