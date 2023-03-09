@@ -73,14 +73,6 @@ const profileFormValidator = new FormValidator(
 );
 profileFormValidator.enableValidation();
 
-/* -------------------------------- popups -------------------------------- */
-const editModal = new Popup({ popupSelector: "#modal" });
-editModal.setEventListeners();
-const addModal = new Popup({ popupSelector: "#add-popup" });
-addModal.setEventListeners();
-const imagepreviewModal = new Popup({ popupSelector: "#popup-image" });
-imagepreviewModal.setEventListeners();
-
 const editFormModal = new PopupWithForm("#modal", () => {
   const titleInput = profileEditForm.querySelector("#popup-name");
   const descriptionInput = profileEditForm.querySelector("#popup-description");
@@ -89,11 +81,18 @@ const editFormModal = new PopupWithForm("#modal", () => {
 
   profileTitle.textContent = titleValue;
   profileDescription.textContent = descriptionValue;
-  closeProfileModal();
+  editFormModal.close();
 });
 editFormModal.setEventListeners();
-const addFormModal = new PopupWithForm("#add-popup", (values) => {
-  console.log(values);
+
+const addFormModal = new PopupWithForm("#add-popup", () => {
+  const card = getCardElement({
+    link: event.target.link.value,
+    name: event.target.title.value,
+  });
+  cardsList.prepend(card);
+  addFormModal.close();
+  addModalForm.reset();
 });
 addFormModal.setEventListeners();
 
