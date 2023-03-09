@@ -81,11 +81,20 @@ addModal.setEventListeners();
 const imagepreviewModal = new Popup({ popupSelector: "#popup-image" });
 imagepreviewModal.setEventListeners();
 
-const editFormModal = new PopupWithForm("#modal", (values) => {
-  console.log(values);
+const editFormModal = new PopupWithForm("#modal", () => {
+  const titleInput = profileEditForm.querySelector("#popup-name");
+  const descriptionInput = profileEditForm.querySelector("#popup-description");
+  const titleValue = titleInput.value;
+  const descriptionValue = descriptionInput.value;
+
+  profileTitle.textContent = titleValue;
+  profileDescription.textContent = descriptionValue;
+  closeProfileModal();
 });
 editFormModal.setEventListeners();
-const addFormModal = new PopupWithForm("#add-popup");
+const addFormModal = new PopupWithForm("#add-popup", (values) => {
+  console.log(values);
+});
 addFormModal.setEventListeners();
 
 function openProfileModal() {
