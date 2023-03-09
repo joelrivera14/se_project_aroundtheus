@@ -81,9 +81,11 @@ addModal.setEventListeners();
 const imagepreviewModal = new Popup({ popupSelector: "#popup-image" });
 imagepreviewModal.setEventListeners();
 
-const editFormModal = new PopupWithForm("#modal-form", () => {});
+const editFormModal = new PopupWithForm("#modal", (values) => {
+  console.log(values);
+});
 editFormModal.setEventListeners();
-const addFormModal = new PopupWithForm("#add-popupform");
+const addFormModal = new PopupWithForm("#add-popup");
 addFormModal.setEventListeners();
 
 function openProfileModal() {
@@ -120,29 +122,29 @@ function like(likeButton) {
   likeButton.classList.toggle("card__like-button_active");
 }
 
-profileEditForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const titleInput = profileEditForm.querySelector("#popup-name");
-  const descriptionInput = profileEditForm.querySelector("#popup-description");
-  const titleValue = titleInput.value;
-  const descriptionValue = descriptionInput.value;
+// profileEditForm.addEventListener("submit", (event) => {
+//   event.preventDefault();
+//   const titleInput = profileEditForm.querySelector("#popup-name");
+//   const descriptionInput = profileEditForm.querySelector("#popup-description");
+//   const titleValue = titleInput.value;
+//   const descriptionValue = descriptionInput.value;
 
-  profileTitle.textContent = titleValue;
-  profileDescription.textContent = descriptionValue;
-  closeProfileModal();
-});
+//   profileTitle.textContent = titleValue;
+//   profileDescription.textContent = descriptionValue;
+//   closeProfileModal();
+// });
 
-addModalForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  console.log(event);
-  const card = getCardElement({
-    link: event.target.link.value,
-    name: event.target.title.value,
-  });
-  cardsList.prepend(card);
-  closeAddModal();
-  addModalForm.reset();
-});
+// addModalForm.addEventListener("submit", (event) => {
+//   event.preventDefault();
+//   console.log(event);
+//   const card = getCardElement({
+//     link: event.target.link.value,
+//     name: event.target.title.value,
+//   });
+//   cardsList.prepend(card);
+//   closeAddModal();
+//   addModalForm.reset();
+// });
 
 function getCardElement(data) {
   const cardElement = cardTemplate.cloneNode(true);
