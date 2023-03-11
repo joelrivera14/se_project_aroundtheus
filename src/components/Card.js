@@ -1,10 +1,3 @@
-import {
-  handleOverlayClose,
-  handleEscUp,
-  openModal,
-  closeModal,
-} from "./utils.js";
-
 export default class Card {
   constructor(data, cardSelector) {
     this._name = data.name;
@@ -28,15 +21,15 @@ export default class Card {
     this._element.remove();
   }
 
-  _handlePreviewClick() {
-    const imageModal = document.querySelector("#popup-image");
-    const imageText = document.querySelector("#popup-text");
-    const imageModalWindow = document.querySelector("#preview-popup");
-    imageModal.src = this._link;
-    imageModal.alt = this._name;
-    imageText.textContent = this._name;
-    openModal(imageModalWindow);
-  }
+  // _handlePreviewClick() {
+  //   const imageModal = document.querySelector("#popup-image");
+  //   const imageText = document.querySelector("#popup-text");
+  //   const imageModalWindow = document.querySelector("#preview-popup");
+  //   imageModal.src = this._link;
+  //   imageModal.alt = this._name;
+  //   imageText.textContent = this._name;
+  //   openModal(imageModalWindow);
+  // }
 
   _setEventListeners() {
     this.likeButton.addEventListener("click", () =>

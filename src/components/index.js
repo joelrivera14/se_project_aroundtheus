@@ -5,6 +5,7 @@ import "../pages/index.css";
 import Popup from "./popup.js";
 import PopupWithForm from "./popupWithForm.js";
 import Section from "./section.js";
+import PopupWithImage from "./popupWithImage.js";
 
 const initialCards = [
   {
@@ -95,6 +96,8 @@ const addFormModal = new PopupWithForm("#add-popup", () => {
   addModalForm.reset();
 });
 addFormModal.setEventListeners();
+
+const imagePopup = new PopupWithImage("#preview-popup");
 
 function openProfileModal() {
   profileTitleInput.value = profileTitle.textContent;
