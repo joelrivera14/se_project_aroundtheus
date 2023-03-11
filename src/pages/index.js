@@ -157,29 +157,29 @@ function like(likeButton) {
 //   addModalForm.reset();
 // });
 
-function getCardElement(data) {
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardImage = cardElement.querySelector(".card__image");
-  const cardTitle = cardElement.querySelector(".card__title");
-  const likeButton = cardElement.querySelector(".card__like-button");
-  likeButton.addEventListener("click", () => like(likeButton));
+// function getCardElement(data) {
+//   const cardElement = cardTemplate.cloneNode(true);
+//   const cardImage = cardElement.querySelector(".card__image");
+//   const cardTitle = cardElement.querySelector(".card__title");
+//   const likeButton = cardElement.querySelector(".card__like-button");
+//   likeButton.addEventListener("click", () => like(likeButton));
 
-  cardImage.src = data.link;
-  cardImage.alt = data.name;
-  cardTitle.textContent = data.name;
-  const cardTrashButton = cardElement.querySelector(".card__trash-button");
-  cardTrashButton.addEventListener("click", () => {
-    cardElement.remove();
-  });
-  cardImage.addEventListener("click", () => {
-    imageModal.src = data.link;
-    imageModal.alt = data.name;
-    imageText.textContent = data.name;
-    openModal(imageModalWindow);
-  });
+//   cardImage.src = data.link;
+//   cardImage.alt = data.name;
+//   cardTitle.textContent = data.name;
+//   const cardTrashButton = cardElement.querySelector(".card__trash-button");
+//   cardTrashButton.addEventListener("click", () => {
+//     cardElement.remove();
+//   });
+//   cardImage.addEventListener("click", () => {
+//     imageModal.src = data.link;
+//     imageModal.alt = data.name;
+//     imageText.textContent = data.name;
+//     openModal(imageModalWindow);
+//   });
 
-  return cardElement;
-}
+//   return cardElement;
+// }
 imageCloseButton.addEventListener("click", () => {
   closeModal(imageModalWindow);
 });
