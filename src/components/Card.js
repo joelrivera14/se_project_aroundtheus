@@ -38,9 +38,9 @@ export default class Card {
     this.cardTrashButton.addEventListener("click", () => {
       this._handleTrashClick();
     });
-    this.cardImage.addEventListener("click", () => {
-      this._handlePreviewClick();
-    });
+    // this.cardImage.addEventListener("click", () => {
+    //   this._handlePreviewClick();
+    // });
   }
 
   generateCard() {

@@ -87,10 +87,7 @@ const editFormModal = new PopupWithForm("#modal", () => {
 editFormModal.setEventListeners();
 
 const addFormModal = new PopupWithForm("#add-popup", () => {
-  const card = getCardElement({
-    link: event.target.link.value,
-    name: event.target.title.value,
-  });
+  const card = createCard(card);
   cardsList.prepend(card);
   addFormModal.close();
   addModalForm.reset();
