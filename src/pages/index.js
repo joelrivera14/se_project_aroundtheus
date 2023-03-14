@@ -6,6 +6,7 @@ import Popup from "../components/Popup.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
+import UserInfo from "../components/UserInfo.js";
 
 const initialCards = [
   {
@@ -74,122 +75,85 @@ const profileFormValidator = new FormValidator(
 );
 profileFormValidator.enableValidation();
 
-const editFormModal = new PopupWithForm("#modal", () => {
-  const titleInput = profileEditForm.querySelector("#popup-name");
-  const descriptionInput = profileEditForm.querySelector("#popup-description");
-  const titleValue = titleInput.value;
-  const descriptionValue = descriptionInput.value;
+const userInfoEl = new UserInfo({
+  nameSelector: ".profile__title",
+  jobSelector: ".profile__description",
+});
 
-  profileTitle.textContent = titleValue;
-  profileDescription.textContent = descriptionValue;
+const sectionEl = new Section(
+  {
+    items: initialCards,
+    renderer: createCard,
+  },
+  ".cards__list"
+);
+sectionEl.renderItems();
+
+const editFormModal = new PopupWithForm("#modal", (inputValues) => {
+  userInfoEl.setUserInfo({
+    name: inputValues.name,
+    job: inputValues.description,
+  });
   editFormModal.close();
 });
 editFormModal.setEventListeners();
 
-const addFormModal = new PopupWithForm("#add-popup", () => {
-  const card = createCard(card);
-  cardsList.prepend(card);
+const addFormModal = new PopupWithForm("#add-popup", (inputValues) => {
+  const card = createCard(inputValues);
+  sectionEl.addItem(card);
   addFormModal.close();
-  addModalForm.reset();
 });
 addFormModal.setEventListeners();
 
 const imagePopup = new PopupWithImage("#preview-popup");
+imagePopup.setEventListeners();
 
-function openProfileModal() {
-  profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
-  profileFormValidator.resetValidation();
-  //   profileModalBox.classList.add("popup_opened");
-  openModal(profileModalBox);
+function createCard(data) {
+  const card = new Card(data, "#card-template", () => {
+    imagePopup.open(data);
+  });
+  return card.generateCard();
 }
-profileEditButton.addEventListener("click", openProfileModal);
-
-function closeProfileModal() {
-  //   profileModalBox.classList.remove("popup_opened");
-  closeModal(profileModalBox);
-}
-profileModalCloseButton.addEventListener("click", closeProfileModal);
-
-function openAddModal() {
-  addModalForm.reset();
-  addFormValidator.resetValidation();
-  //   addModalBox.classList.add("popup_opened");
-  openModal(addModalBox);
-  console.log(addModalForm);
-}
-addModalButton.addEventListener("click", openAddModal);
-
-function closeAddModal() {
-  //   addModalBox.classList.remove("popup_opened");
-  closeModal(addModalBox);
-}
-addModalCloseButton.addEventListener("click", closeAddModal);
-
-function like(likeButton) {
-  likeButton.classList.toggle("card__like-button_active");
-}
-
-// profileEditForm.addEventListener("submit", (event) => {
-//   event.preventDefault();
-//   const titleInput = profileEditForm.querySelector("#popup-name");
-//   const descriptionInput = profileEditForm.querySelector("#popup-description");
-//   const titleValue = titleInput.value;
-//   const descriptionValue = descriptionInput.value;
-
-//   profileTitle.textContent = titleValue;
-//   profileDescription.textContent = descriptionValue;
-//   closeProfileModal();
-// });
-
-// addModalForm.addEventListener("submit", (event) => {
-//   event.preventDefault();
-//   console.log(event);
-//   const card = getCardElement({
-//     link: event.target.link.value,
-//     name: event.target.title.value,
-//   });
-//   cardsList.prepend(card);
-//   closeAddModal();
-//   addModalForm.reset();
-// });
-
-// function getCardElement(data) {
-//   const cardElement = cardTemplate.cloneNode(true);
-//   const cardImage = cardElement.querySelector(".card__image");
-//   const cardTitle = cardElement.querySelector(".card__title");
-//   const likeButton = cardElement.querySelector(".card__like-button");
-//   likeButton.addEventListener("click", () => like(likeButton));
-
-//   cardImage.src = data.link;
-//   cardImage.alt = data.name;
-//   cardTitle.textContent = data.name;
-//   const cardTrashButton = cardElement.querySelector(".card__trash-button");
-//   cardTrashButton.addEventListener("click", () => {
-//     cardElement.remove();
-//   });
-//   cardImage.addEventListener("click", () => {
-//     imageModal.src = data.link;
-//     imageModal.alt = data.name;
-//     imageText.textContent = data.name;
-//     openModal(imageModalWindow);
-//   });
-
-//   return cardElement;
-// }
-imageCloseButton.addEventListener("click", () => {
-  closeModal(imageModalWindow);
-});
 
 initialCards.forEach((cardData) => {
   const card = createCard(cardData);
   cardsList.append(card);
 });
 
-function createCard(data) {
-  const card = new Card(data, "#card-template");
-  return card.generateCard();
+function openProfileModal() {
+  const { name, job } = userInfoEl.getUserInfo();
+  profileTitleInput.value = name;
+  profileDescriptionInput.value = job;
+  profileFormValidator.resetValidation();
+  openModal(profileModalBox);
 }
+profileEditButton.addEventListener("click", openProfileModal);
+addModalButton.addEventListener("click", () => {
+  addFormValidator.resetValidation();
+  addFormModal.open();
+});
+
+function closeProfileModal() {
+  closeModal(profileModalBox);
+}
+profileModalCloseButton.addEventListener("click", closeProfileModal);
+
+// function openAddModal() {
+//   addModalForm.reset();
+//   addFormValidator.resetValidation();
+//   openModal(addModalBox);
+//   console.log(addModalForm);
+// }
+// addModalButton.addEventListener("click", openAddModal);
+
+// function closeAddModal() {
+//   closeModal(addModalBox);
+// }
+// addModalCloseButton.addEventListener("click", closeAddModal);
+
+imageCloseButton.addEventListener("click", () => {
+  closeModal(imageModalWindow);
+});
 
 // for (let i = 0; i < initialCards.length; i++) {
 //   cardsList.append(getCardElement(initialCards[i]));
