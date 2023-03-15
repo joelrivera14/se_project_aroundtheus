@@ -133,7 +133,7 @@ addModalButton.addEventListener("click", () => {
 });
 
 function closeProfileModal() {
-  closeModal(profileModalBox);
+  editFormModal.close(profileModalBox);
 }
 profileModalCloseButton.addEventListener("click", closeProfileModal);
 
