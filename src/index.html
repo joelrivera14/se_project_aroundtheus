@@ -19,6 +19,7 @@
           class="header__logo"
         />
       </header>
+
       <main class="content">
         <section class="profile">
           <img
@@ -36,81 +37,13 @@
         <section class="cards">
           <ul class="cards__list"></ul>
         </section>
-        <!-- <section class="cards">
-          <ul class="cards__list">
-            <li class="card">
-              <img
-                src="./images/yosemite.png"
-                alt="yosemite valley"
-                class="card__image"
-              />
-              <div class="card__description">
-                <h2 class="card__title">Yosemite Valley</h2>
-                <button type="button" class="card__like-button"></button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                src="./images/lakelouise.png"
-                alt="lake louise"
-                class="card__image"
-              />
-              <div class="card__description">
-                <h2 class="card__title">Lake Louise</h2>
-                <button type="button" class="card__like-button"></button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                src="./images/baldmountains.png"
-                alt="bald mountains"
-                class="card__image"
-              />
-              <div class="card__description">
-                <h2 class="card__title">Bald mountains</h2>
-                <button type="button" class="card__like-button"></button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                src="./images/latemare.png"
-                alt="latemar"
-                class="card__image"
-              />
-              <div class="card__description">
-                <h2 class="card__title">Latemar</h2>
-                <button type="button" class="card__like-button"></button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                src="./images/vanoise.png"
-                alt="vanoise national park"
-                class="card__image"
-              />
-              <div class="card__description">
-                <h2 class="card__title">Vanoise National Park</h2>
-                <button type="button" class="card__like-button"></button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                src="./images/lagodibraise.png"
-                alt="lago di braies"
-                class="card__image"
-              />
-              <div class="card__description">
-                <h2 class="card__title">Lago di Braies</h2>
-                <button type="button" class="card__like-button"></button>
-              </div>
-            </li>
-          </ul>
-        </section> -->
       </main>
     </div>
+
     <footer class="footer">
       <p class="footer__copyright">© 2022 Around The U.S.</p>
     </footer>
+    <!-- 
     <div class="popup" id="modal">
       <div class="popup__container">
         <img
@@ -196,18 +129,6 @@
       </div>
     </div>
 
-    <template id="card-template">
-      <li class="card">
-        <img src="#" alt="" class="card__image" />
-        <button class="card__trash-button" type="button">
-          <img src="<%=require('./images/Trash.svg')%>" />
-        </button>
-        <div class="card__description">
-          <h2 class="card__title"></h2>
-          <button type="button" class="card__like-button"></button>
-        </div>
-      </li>
-    </template>
 
     <div class="popup" id="preview-popup">
       <div
@@ -223,7 +144,38 @@
         <img class="popup__image" src="#" alt="" id="popup-image" />
         <p class="popup__text" id="popup-text"></p>
       </div>
+    </div> -->
+
+    <template id="card-template">
+      <li class="card">
+        <img src="#" alt="" class="card__image" />
+        <button class="card__trash-button" type="button">
+          <img src="<%=require('./images/Trash.svg')%>" />
+        </button>
+        <div class="card__description">
+          <h2 class="card__title"></h2>
+          <button type="button" class="card__like-button"></button>
+        </div>
+      </li>
+    </template>
+
+    <div class="popup" id="delete-popup">
+      <div class="popup__container">
+        <img
+          src="<%=require('./images/closebutton.svg')%>"
+          alt="close button"
+          class="popup__closebutton"
+          id="add-popupclosebutton"
+        />
+        <p class="popup__title">Are you sure?</p>
+        <form class="popup__form" id="delete-popupform">
+          <fieldset class="popup__fieldset">
+            <button class="popup__button" type="submit">Yes</button>
+          </fieldset>
+        </form>
+      </div>
     </div>
+
     <script type="module" src="./components/index.js"></script>
   </body>
 </html>
