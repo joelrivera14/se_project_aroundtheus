@@ -11,6 +11,10 @@
   margin-right: 30px;
 }
 
+.profile__image-edit {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
 .profile__info {
   display: grid;
   grid-template-areas:
