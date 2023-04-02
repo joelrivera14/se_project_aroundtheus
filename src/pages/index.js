@@ -121,28 +121,6 @@ function closeProfileModal() {
 }
 profileModalCloseButton.addEventListener("click", closeProfileModal);
 
-// function openAddModal() {
-//   addModalForm.reset();
-//   addFormValidator.resetValidation();
-//   openModal(addModalBox);
-//   console.log(addModalForm);
-// }
-// addModalButton.addEventListener("click", openAddModal);
-
-// function closeAddModal() {
-//   closeModal(addModalBox);
-// }
-// addModalCloseButton.addEventListener("click", closeAddModal);
-
 imageCloseButton.addEventListener("click", () => {
   closeModal(imageModalWindow);
 });
-
-// for (let i = 0; i < initialCards.length; i++) {
-//   cardsList.append(getCardElement(initialCards[i]));
-
-//   // This is the same code as above
-//   // const data = initialCards[i];
-//   // const cardElement = getCardElement(data);
-//   // cardsList.prepend(cardElement);
-// }
