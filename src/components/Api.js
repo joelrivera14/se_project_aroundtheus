@@ -14,6 +14,10 @@ export default class Api {
     });
   }
 
+  getAppInfo() {
+    return Promise.all([this.getUserInfo(), this.initialCards()]);
+  }
+
   initialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       method: "GET",

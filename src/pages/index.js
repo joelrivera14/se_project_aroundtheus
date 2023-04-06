@@ -52,19 +52,21 @@ const api = new Api({
     "Content-Type": "application/json",
   },
 });
-
+let sectionEl;
 api
-  .getUserInfo()
+  .getAppInfo()
   .then(([userData, cardData]) => {
+    console.log(userData);
+    console.log(cardData);
     userInfoEl.setUserInfo(userData.name, userData.job);
-    userInfoEl.setAvatarInfo(userData.data);
+    userInfoEl.setAvatarInfo(userData.avatar);
 
-    const sectionEl = new Section(
+    sectionEl = new Section(
       {
         items: cardData,
 
         renderer: (data) => {
-          const card = renderCard(data);
+          const card = createCard(data);
           sectionEl.addItem(card);
         },
       },
@@ -83,11 +85,6 @@ function createCard(data) {
   });
   return card.generateCard();
 }
-
-initialCards.forEach((cardData) => {
-  const card = createCard(cardData);
-  cardsList.append(card);
-});
 
 const addFormValidator = new FormValidator(addModalForm, formValidationConfig);
 addFormValidator.enableValidation();

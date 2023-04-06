@@ -13,8 +13,8 @@ export default class UserInfo {
     };
   }
 
-  setAvatarInfo(data) {
-    this._avatarElement.src = data;
+  setAvatarInfo(avatar) {
+    this._avatarElement.src = avatar;
   }
 
   setUserInfo({ name, job }) {
