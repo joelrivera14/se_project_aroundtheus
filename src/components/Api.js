@@ -40,16 +40,16 @@ export default class Api {
 
   addNewCard({ name, link }) {
     return fetch(`${this._baseUrl}/cards`, {
-        method: "post"
-        headers: this._headers,
-        body: JSON.stringify({
-            name,
-            link,
-          }),
+      method: "post",
+      headers: this._headers,
+      body: JSON.stringify({
+        name,
+        link,
+      }),
     }).then((res) => {
-        console.log(res);
-        return res.json();
-      });
+      console.log(res);
+      return res.json();
+    });
   }
 
   cardLikes(cardId) {
@@ -57,9 +57,9 @@ export default class Api {
       method: "PUT",
       headers: this._headers,
     }).then((res) => {
-        console.log(res);
-        return res.json();
-      });
+      console.log(res);
+      return res.json();
+    });
   }
 
   deleteCard(cardID) {
@@ -67,9 +67,9 @@ export default class Api {
       method: "DELETE",
       headers: this._headers,
     }).then((res) => {
-        console.log(res);
-        return res.json();
-      });
+      console.log(res);
+      return res.json();
+    });
   }
 
   addLike(cardId) {
@@ -77,9 +77,9 @@ export default class Api {
       method: "PUT",
       headers: this._headers,
     }).then((res) => {
-        console.log(res);
-        return res.json();
-      });
+      console.log(res);
+      return res.json();
+    });
   }
 
   removeLike(cardId) {
@@ -87,9 +87,9 @@ export default class Api {
       method: "DELETE",
       headers: this._headers,
     }).then((res) => {
-        console.log(res);
-        return res.json();
-      });
+      console.log(res);
+      return res.json();
+    });
   }
 
   updateProfilePicture(avatar) {
@@ -100,9 +100,9 @@ export default class Api {
         avatar: avatar,
       }),
     }).then((res) => {
-        console.log(res);
-        return res.json();
-      });
+      console.log(res);
+      return res.json();
+    });
   }
 
   // other methods for working with the API

@@ -38,6 +38,13 @@ const formValidationConfig = {
   errorClass: "popup__error_visible",
 };
 
+const userInfoEl = new UserInfo({
+  nameSelector: ".profile__title",
+  jobSelector: ".profile__description",
+  avatarSelector: ".profile__imagecontainer",
+});
+
+/*---------- API ----------*/
 const api = new Api({
   baseUrl: "https://around.nomoreparties.co/v1/group-12",
   headers: {
@@ -46,7 +53,41 @@ const api = new Api({
   },
 });
 
-api.getUserInfo();
+api
+  .getUserInfo()
+  .then(([userData, cardData]) => {
+    userInfoEl.setUserInfo(userData.name, userData.job);
+    userInfoEl.setAvatarInfo(userData.data);
+
+    const sectionEl = new Section(
+      {
+        items: cardData,
+
+        renderer: (data) => {
+          const card = renderCard(data);
+          sectionEl.addItem(card);
+        },
+      },
+      ".cards__list"
+    );
+    sectionEl.renderItems();
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+/*----------renderCard Function with API handlers----------*/
+function createCard(data) {
+  const card = new Card(data, "#card-template", () => {
+    imagePopup.open(data);
+  });
+  return card.generateCard();
+}
+
+initialCards.forEach((cardData) => {
+  const card = createCard(cardData);
+  cardsList.append(card);
+});
 
 const addFormValidator = new FormValidator(addModalForm, formValidationConfig);
 addFormValidator.enableValidation();
@@ -57,20 +98,6 @@ const profileFormValidator = new FormValidator(
   formValidationConfig
 );
 profileFormValidator.enableValidation();
-
-const userInfoEl = new UserInfo({
-  nameSelector: ".profile__title",
-  jobSelector: ".profile__description",
-});
-
-const sectionEl = new Section(
-  {
-    items: initialCards,
-    renderer: createCard,
-  },
-  ".cards__list"
-);
-sectionEl.renderItems();
 
 const editFormModal = new PopupWithForm("#modal", (inputValues) => {
   userInfoEl.setUserInfo({
@@ -90,18 +117,6 @@ addFormModal.setEventListeners();
 
 const imagePopup = new PopupWithImage("#preview-popup");
 imagePopup.setEventListeners();
-
-function createCard(data) {
-  const card = new Card(data, "#card-template", () => {
-    imagePopup.open(data);
-  });
-  return card.generateCard();
-}
-
-initialCards.forEach((cardData) => {
-  const card = createCard(cardData);
-  cardsList.append(card);
-});
 
 function openProfileModal() {
   const { name, job } = userInfoEl.getUserInfo();

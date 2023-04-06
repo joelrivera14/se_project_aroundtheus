@@ -22,16 +22,13 @@
 
       <main class="content">
         <section class="profile">
-          <img
-            src="<%=require('./images/avatar.png')%>"
-            alt="avatar"
-            class="profile__image"
-          />
-          <img
-            src="<%=require('./images/editpencil.svg')%>"
-            alt="avatar"
-            class="profile__image-edit"
-          />
+          <div class="profile__imagecontainer">
+            <img
+              src="<%=require('./images/editpencil.svg')%>"
+              alt="avatar"
+              class="profile__image-edit"
+            />
+          </div>
           <div class="profile__info">
             <h1 class="profile__title">Jacques Cousteau</h1>
             <button type="button" class="profile__edit-button"></button>
@@ -174,7 +171,9 @@
         <p class="popup__title">Are you sure?</p>
         <form class="popup__form" id="delete-popupform">
           <fieldset class="popup__fieldset">
-            <button class="popup__button" type="submit">Yes</button>
+            <button class="popup__button" id="delete__button" type="submit">
+              Yes
+            </button>
           </fieldset>
         </form>
       </div>
