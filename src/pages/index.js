@@ -80,10 +80,18 @@ api
 
 /*----------renderCard Function with API handlers----------*/
 function createCard(data) {
-  const card = new Card(data, "#card-template", () => {
-    imagePopup.open(data);
-  });
+  const card = new Card(
+    data,
+    "#card-template",
+    () => {
+      imagePopup.open(data);
+    },
+    () => {
+      addLIke(data);
+    }
+  );
   return card.generateCard();
+  updatelikes();
 }
 
 const addFormValidator = new FormValidator(addModalForm, formValidationConfig);
