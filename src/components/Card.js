@@ -1,13 +1,12 @@
 export default class Card {
-  constructor(data, cardSelector, handleImageClick, handleLikeClick) {
+  constructor({ data, cardSelector, handlePreviewImage, handleLikeCard }) {
     this._name = data.name;
     this._link = data.link;
     this._likes = data.likes;
-    this._numLikes = this._likes.length;
 
     this._cardSelector = cardSelector;
-    this._handleImageClick = handleImageClick;
-    this._handleLikeClick = handleLikeClick;
+    this._handleImageClick = handlePreviewImage;
+    this._handleLikeClick = handleLikeCard;
   }
 
   _getTemplate() {
@@ -26,8 +25,7 @@ export default class Card {
   }
 
   updateLikes() {
-    this._numLikes = this._likes.length;
-    this._cardLikes.textContent = this._numLikes;
+    this._cardLikes.textContent = this._likes.length;
   }
 
   _setEventListeners() {

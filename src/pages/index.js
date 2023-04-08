@@ -79,19 +79,34 @@ api
   });
 
 /*----------renderCard Function with API handlers----------*/
+// function createCard(data) {
+//   const card = new Card(
+//     data,
+//     "#card-template",
+//     () => {
+//       imagePopup.open(data);
+//     },
+//     () => {
+//       addLike(data);
+//     }
+//   );
+//   return card.generateCard();
+//   updatelikes();
+// }
 function createCard(data) {
-  const card = new Card(
+  const card = new Card({
     data,
-    "#card-template",
-    () => {
+    cardSelector: "#card-template",
+    handlePreviewImage: () => {
       imagePopup.open(data);
     },
-    () => {
-      addLIke(data);
-    }
-  );
+    handleLikeCard: () => {
+      api.addLike(data).then((data) => {
+        card.updateLikes(data);
+      });
+    },
+  });
   return card.generateCard();
-  updatelikes();
 }
 
 const addFormValidator = new FormValidator(addModalForm, formValidationConfig);
