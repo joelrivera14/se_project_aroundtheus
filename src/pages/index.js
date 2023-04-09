@@ -53,10 +53,11 @@ const api = new Api({
   },
 });
 let sectionEl;
+let currentUserId;
 api
   .getAppInfo()
   .then(([userData, cardData]) => {
-    console.log(userData);
+    console.log({ userData });
     console.log(cardData);
     userInfoEl.setUserInfo(userData.name, userData.job);
     userInfoEl.setAvatarInfo(userData.avatar);
@@ -97,12 +98,13 @@ function createCard(data) {
   const card = new Card({
     data,
     cardSelector: "#card-template",
+    currentUserId,
     handlePreviewImage: () => {
       imagePopup.open(data);
     },
     handleLikeCard: () => {
       api.addLike(data).then((data) => {
-        card.updateLikes(data);
+        card.updateLikes(data.likes);
       });
     },
   });
