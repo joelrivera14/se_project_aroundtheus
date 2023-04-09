@@ -107,6 +107,11 @@ function createCard(data) {
         card.updateLikes(data.likes);
       });
     },
+    handleDeleteCard: () => {
+      api.removeLike(data).then((data) => {
+        card.deleteClick(data.likes);
+      });
+    },
   });
   return card.generateCard();
 }
