@@ -46,6 +46,14 @@ export default class Card {
     return this._likes.some((like) => like._id === this._currentUserId);
   }
 
+  _checkIdForDeleteIcon(userId) {
+    if (userId.owner._id === this._currentUserID) {
+      this.addTrashIcon();
+    } else {
+      this.removeTrashIcon();
+    }
+  }
+
   _setEventListeners() {
     this.likeButton.addEventListener("click", () => this._handleLikeCard());
     this.cardTrashButton.addEventListener("click", () => {
@@ -68,7 +76,6 @@ export default class Card {
     this._cardLikes = this._element.querySelector(".card__likes-counter");
     this.renderLikes();
     this._setEventListeners();
-    // if(userId ==)
     return this._element;
   }
 }
