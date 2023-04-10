@@ -15,7 +15,7 @@ export default class Card {
     this._handleImageClick = handlePreviewImage;
     this._handleLikeCard = handleLikeCard;
     this._currentUserId = currentUserId;
-    this._owner = owner;
+    this._owner = owner._id;
     console.log(data);
   }
 
