@@ -16,6 +16,7 @@ export default class Card {
     this._handleLikeCard = handleLikeCard;
     this._currentUserId = currentUserId;
     this._owner = owner;
+    console.log(data);
   }
 
   _getTemplate() {
