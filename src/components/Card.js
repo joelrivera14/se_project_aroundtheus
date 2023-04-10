@@ -46,8 +46,8 @@ export default class Card {
     return this._likes.some((like) => like._id === this._currentUserId);
   }
 
-  _checkIdForDelete(userId) {
-    if (userId.owner._id === this._currentUserID) {
+  _checkIdForDelete() {
+    if (this._owner === this._currentUserId) {
       this.addTrash();
     } else {
       this.removeTrash();
@@ -56,10 +56,12 @@ export default class Card {
 
   addTrash() {
     this.cardTrashButton.classList.add(".card__trash-button");
+    _checkIdForDelete();
   }
 
   removeTrash() {
     this.cardTrashButton.classList.remove(".card__trash-button");
+    _checkIdForDelete();
   }
 
   _setEventListeners() {
