@@ -66,6 +66,10 @@
   cursor: pointer;
 }
 
+.card__trash-button-active {
+  display: none;
+}
+
 .card__trash-button:hover {
   opacity: 0.5;
 }

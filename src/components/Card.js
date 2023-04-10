@@ -5,6 +5,7 @@ export default class Card {
     handlePreviewImage,
     handleLikeCard,
     currentUserId,
+    owner,
   }) {
     this._name = data.name;
     this._link = data.link;
@@ -14,6 +15,7 @@ export default class Card {
     this._handleImageClick = handlePreviewImage;
     this._handleLikeCard = handleLikeCard;
     this._currentUserId = currentUserId;
+    this._owner = owner;
   }
 
   _getTemplate() {
@@ -55,13 +57,11 @@ export default class Card {
   }
 
   addTrash() {
-    this.cardTrashButton.classList.add(".card__trash-button");
-    _checkIdForDelete();
+    this.cardTrashButton.classList.remove(".card__trash-button-active");
   }
 
   removeTrash() {
-    this.cardTrashButton.classList.remove(".card__trash-button");
-    _checkIdForDelete();
+    this.cardTrashButton.classList.add(".card__trash-button-active");
   }
 
   _setEventListeners() {
@@ -88,6 +88,7 @@ export default class Card {
     this._cardLikes = this._element.querySelector(".card__likes-counter");
     this.renderLikes();
     this._setEventListeners();
+    this._checkIdForDelete();
     return this._element;
   }
 }
