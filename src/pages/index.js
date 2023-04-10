@@ -57,8 +57,7 @@ let currentUserId;
 api
   .getAppInfo()
   .then(([userData, cardData]) => {
-    console.log({ userData });
-    console.log(cardData);
+    currentUserId = userData._id;
     userInfoEl.setUserInfo(userData.name, userData.job);
     userInfoEl.setAvatarInfo(userData.avatar);
 
@@ -102,13 +101,19 @@ function createCard(data) {
     handlePreviewImage: () => {
       imagePopup.open(data);
     },
-    handleLikeCard: () => {
-      api.addLike(data).then((data) => {
-        card.updateLikes(data.likes);
-      });
+    handleLikeCard: (shouldRemoveLike) => {
+      if (shouldRemoveLike) {
+        api.removeLike(data).then((data) => {
+          card.updateLikes(data.likes);
+        });
+      } else {
+        api.addLike(data).then((data) => {
+          card.updateLikes(data.likes);
+        });
+      }
     },
     handleDeleteCard: () => {
-      api.removeLike(data).then((data) => {
+      api.deleteCard(data).then((data) => {
         card.deleteClick(data.likes);
       });
     },

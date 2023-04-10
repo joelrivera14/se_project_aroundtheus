@@ -48,14 +48,24 @@ export default class Card {
 
   _checkIdForDelete(userId) {
     if (userId.owner._id === this._currentUserID) {
-      this.add();
+      this.addTrash();
     } else {
-      this.remove();
+      this.removeTrash();
     }
   }
 
+  addTrash() {
+    this.cardTrashButton.classList.add(".card__trash-button");
+  }
+
+  removeTrash() {
+    this.cardTrashButton.classList.remove(".card__trash-button");
+  }
+
   _setEventListeners() {
-    this.likeButton.addEventListener("click", () => this._handleLikeCard());
+    this.likeButton.addEventListener("click", () =>
+      this._handleLikeCard(this.isLiked())
+    );
     this.cardTrashButton.addEventListener("click", () => {
       this.deleteClick();
     });
