@@ -5,6 +5,7 @@ export default class Card {
     handlePreviewImage,
     handleLikeCard,
     currentUserId,
+    owner,
   }) {
     this._name = data.name;
     this._link = data.link;
@@ -57,11 +58,11 @@ export default class Card {
   }
 
   addTrash() {
-    this.cardTrashButton.classList.remove(".card__trash-button_active");
+    this.cardTrashButton.classList.remove("card__trash-button_active");
   }
 
   removeTrash() {
-    this.cardTrashButton.classList.add(".card__trash-button_active");
+    this.cardTrashButton.classList.add("card__trash-button_active");
   }
 
   _setEventListeners() {
