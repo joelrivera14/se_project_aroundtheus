@@ -57,11 +57,11 @@ export default class Card {
   }
 
   addTrash() {
-    this.cardTrashButton.classList.remove(".card__trash-button-active");
+    this.cardTrashButton.classList.remove(".card__trash-button_active");
   }
 
   removeTrash() {
-    this.cardTrashButton.classList.add(".card__trash-button-active");
+    this.cardTrashButton.classList.add(".card__trash-button_active");
   }
 
   _setEventListeners() {
