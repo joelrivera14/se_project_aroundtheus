@@ -5,7 +5,6 @@ export default class Card {
     handlePreviewImage,
     handleLikeCard,
     currentUserId,
-    owner,
   }) {
     this._name = data.name;
     this._link = data.link;
@@ -15,8 +14,8 @@ export default class Card {
     this._handleImageClick = handlePreviewImage;
     this._handleLikeCard = handleLikeCard;
     this._currentUserId = currentUserId;
-    this._owner = owner._id;
-    console.log(data);
+    this._owner = data.owner._id;
+    console.log(this._owner);
   }
 
   _getTemplate() {
