@@ -132,6 +132,7 @@ const profileFormValidator = new FormValidator(
 profileFormValidator.enableValidation();
 
 const editFormModal = new PopupWithForm("#modal", (inputValues) => {
+  editFormModal.renderLoading(true);
   api.editProfile(inputValues).then(() => {
     userInfoEl.setUserInfo({
       name: inputValues.name,
