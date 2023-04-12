@@ -113,14 +113,14 @@ function createCard(data) {
         });
       }
     },
-    handleDeleteCard: () => {
-      deletePopup.open();
-      deletePopup.(() => {
-        api.deleteCard(card).then((data) => {
-          card.deleteClick(data.likes);
-        });
-      });
-    },
+    // handleDeleteCard: () => {
+    //   deletePopup.open();
+    //   deletePopup.(() => {
+    //     api.deleteCard(card).then((data) => {
+    //       card.deleteClick(data.likes);
+    //     });
+    //   });
+    // },
   });
   return card.generateCard();
 }
@@ -165,6 +165,11 @@ const addFormModal = new PopupWithForm("#add-popup", (inputValues) => {
     });
 });
 addFormModal.setEventListeners();
+
+const updateProfileForm = new PopupWithForm("avi-popup", (inputValues) => {
+  updateProfileForm.renderLoading(true);
+  api.updateProfilePicture(inputValues);
+});
 
 const imagePopup = new PopupWithImage("#preview-popup");
 imagePopup.setEventListeners();

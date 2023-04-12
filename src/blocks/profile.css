@@ -5,21 +5,26 @@
   padding-bottom: 37px;
 }
 
-.profile__imagecontainer {
-  background-image: url("../images/avatar.png");
-  height: 120px;
-  width: 120px;
-  margin-right: 30px;
+.profile__image-container {
+  position: relative;
 }
 
 .profile__image {
   height: 120px;
   width: 120px;
   margin-right: 30px;
+  position: relative;
+}
+
+.profile__image-opacity {
+  opacity: 0.2;
 }
 
 .profile__image-edit {
   background-color: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 47px;
+  left: 47px;
 }
 
 .profile__info {
