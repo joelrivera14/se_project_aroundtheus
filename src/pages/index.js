@@ -141,8 +141,8 @@ const editFormModal = new PopupWithForm("#modal", (inputValues) => {
 editFormModal.setEventListeners();
 
 const addFormModal = new PopupWithForm("#add-popup", (inputValues) => {
-  api.addNewCard(inputValues).then((inputValues) => {
-    const card = createCard(inputValues);
+  api.addNewCard(inputValues).then((data) => {
+    const card = createCard(data);
     sectionEl.addItem(card);
     addFormModal.close();
   });
