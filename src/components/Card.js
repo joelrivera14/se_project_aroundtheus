@@ -5,6 +5,7 @@ export default class Card {
     handlePreviewImage,
     handleLikeCard,
     currentUserId,
+    handleDeleteCard,
     owner,
   }) {
     this._name = data.name;
@@ -16,6 +17,7 @@ export default class Card {
     this._handleLikeCard = handleLikeCard;
     this._currentUserId = currentUserId;
     this._owner = data.owner._id;
+    this._handleDeleteCard = handleDeleteCard;
     console.log(this._owner);
   }
 
@@ -70,7 +72,7 @@ export default class Card {
       this._handleLikeCard(this.isLiked())
     );
     this.cardTrashButton.addEventListener("click", () => {
-      this.deleteClick();
+      this._handleDeleteCard();
     });
     this.cardImage.addEventListener("click", () => {
       this._handleImageClick();

@@ -28,13 +28,13 @@ export default class Api {
     });
   }
 
-  editProfile({ name, about }) {
+  editProfile({ name, description }) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
         name: name,
-        about: about,
+        about: description,
       }),
     }).then((res) => {
       console.log(res);

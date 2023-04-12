@@ -7,6 +7,7 @@ import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
 import Api from "../components/Api.js";
+import PopupWithConfirmation from "../components/PopupConfirmation.js";
 
 const profileModalBox = document.querySelector("#modal");
 const profileEditButton = document.querySelector(".profile__edit-button");
@@ -58,7 +59,7 @@ api
   .getAppInfo()
   .then(([userData, cardData]) => {
     currentUserId = userData._id;
-    userInfoEl.setUserInfo(userData.name, userData.job);
+    userInfoEl.setUserInfo({ name: userData.name, job: userData.about });
     userInfoEl.setAvatarInfo(userData.avatar);
 
     sectionEl = new Section(
@@ -113,8 +114,11 @@ function createCard(data) {
       }
     },
     handleDeleteCard: () => {
-      api.deleteCard(data).then((data) => {
-        card.deleteClick(data.likes);
+      deletePopup.open();
+      deletePopup.(() => {
+        api.deleteCard(card).then((data) => {
+          card.deleteClick(data.likes);
+        });
       });
     },
   });
@@ -131,9 +135,13 @@ const profileFormValidator = new FormValidator(
 );
 profileFormValidator.enableValidation();
 
+const deletePopup = new PopupWithConfirmation("#delete-popup");
+deletePopup.setEventListeners();
+
 const editFormModal = new PopupWithForm("#modal", (inputValues) => {
   editFormModal.renderLoading(true);
   api.editProfile(inputValues).then(() => {
+    editFormModal.renderLoading(false);
     userInfoEl.setUserInfo({
       name: inputValues.name,
       job: inputValues.description,
@@ -144,11 +152,17 @@ const editFormModal = new PopupWithForm("#modal", (inputValues) => {
 editFormModal.setEventListeners();
 
 const addFormModal = new PopupWithForm("#add-popup", (inputValues) => {
-  api.addNewCard(inputValues).then((data) => {
-    const card = createCard(data);
-    sectionEl.addItem(card);
-    addFormModal.close();
-  });
+  addFormModal.renderLoading(true);
+  api
+    .addNewCard(inputValues)
+    .then((data) => {
+      const card = createCard(data);
+      sectionEl.addItem(card);
+      addFormModal.close();
+    })
+    .finally(() => {
+      addFormModal.renderLoading(false);
+    });
 });
 addFormModal.setEventListeners();
 
