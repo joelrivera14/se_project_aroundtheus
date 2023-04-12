@@ -132,11 +132,13 @@ const profileFormValidator = new FormValidator(
 profileFormValidator.enableValidation();
 
 const editFormModal = new PopupWithForm("#modal", (inputValues) => {
-  userInfoEl.setUserInfo({
-    name: inputValues.name,
-    job: inputValues.description,
+  api.editProfile(inputValues).then(() => {
+    userInfoEl.setUserInfo({
+      name: inputValues.name,
+      job: inputValues.description,
+    });
+    editFormModal.close();
   });
-  editFormModal.close();
 });
 editFormModal.setEventListeners();
 
