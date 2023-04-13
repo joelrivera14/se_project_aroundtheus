@@ -136,6 +136,10 @@ const profileFormValidator = new FormValidator(
 );
 profileFormValidator.enableValidation();
 
+const aviForm = document.querySelector("#avi-popupform");
+const aviFormValidator = new FormValidator(aviForm, formValidationConfig);
+aviFormValidator.enableValidation();
+
 const deletePopup = new PopupWithConfirmation("#delete-popup");
 deletePopup.setEventListeners();
 
@@ -170,9 +174,11 @@ addFormModal.setEventListeners();
 const updateProfileForm = new PopupWithForm("#avi-popup", (inputValues) => {
   updateProfileForm.renderLoading(true);
   api.updateProfilePicture(inputValues).then((value) => {
-    userInfoEl.setAvatarInfo(value);
+    userInfoEl.setAvatarInfo(value.avatar);
+    updateProfileForm.close();
   });
 });
+updateProfileForm.setEventListeners();
 
 const profileEdit = document.querySelector(".profile__image");
 profileEdit.addEventListener("click", () => {
