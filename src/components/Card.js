@@ -11,6 +11,7 @@ export default class Card {
     this._name = data.name;
     this._link = data.link;
     this._likes = data.likes;
+    this._id = data._id;
 
     this._cardSelector = cardSelector;
     this._handleImageClick = handlePreviewImage;
@@ -72,7 +73,7 @@ export default class Card {
       this._handleLikeCard(this.isLiked())
     );
     this.cardTrashButton.addEventListener("click", () => {
-      this._handleDeleteCard();
+      this._handleDeleteCard(this._id);
     });
     this.cardImage.addEventListener("click", () => {
       this._handleImageClick();

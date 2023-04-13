@@ -14,22 +14,22 @@ const profileEditButton = document.querySelector(".profile__edit-button");
 const profileModalCloseButton =
   profileModalBox.querySelector("#modal-closebutton");
 const profileEditForm = profileModalBox.querySelector("#modal-form");
-const profileTitle = document.querySelector(".profile__title");
-const profileDescription = document.querySelector(".profile__description");
 const profileTitleInput = document.querySelector("#popup-name");
 const profileDescriptionInput = document.querySelector("#popup-description");
 const addModalBox = document.querySelector("#add-popup");
 const addModalButton = document.querySelector(".profile__add-button");
 console.log(addModalBox);
-const addModalCloseButton = addModalBox.querySelector("#add-popupclosebutton");
 const addModalForm = addModalBox.querySelector("#add-popupform");
-const imageModal = document.querySelector("#popup-image");
-const imageText = document.querySelector("#popup-text");
 const imageModalWindow = document.querySelector("#preview-popup");
 const imageCloseButton = imageModalWindow.querySelector("#popup-closebutton");
 const cardsList = document.querySelector(".cards__list");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
+const imageModal = document.querySelector("#popup-image");
+const imageText = document.querySelector("#popup-text");
+const addModalCloseButton = addModalBox.querySelector("#add-popupclosebutton");
+const profileTitle = document.querySelector(".profile__title");
+const profileDescription = document.querySelector(".profile__description");
 
 const formValidationConfig = {
   inputSelector: ".popup__input",
@@ -42,7 +42,7 @@ const formValidationConfig = {
 const userInfoEl = new UserInfo({
   nameSelector: ".profile__title",
   jobSelector: ".profile__description",
-  avatarSelector: ".profile__imagecontainer",
+  avatarSelector: ".profile__image",
 });
 
 /*---------- API ----------*/
@@ -113,14 +113,15 @@ function createCard(data) {
         });
       }
     },
-    // handleDeleteCard: () => {
-    //   deletePopup.open();
-    //   deletePopup.(() => {
-    //     api.deleteCard(card).then((data) => {
-    //       card.deleteClick(data.likes);
-    //     });
-    //   });
-    // },
+    handleDeleteCard: (cardId) => {
+      deletePopup.open();
+      deletePopup.setSubmitAction(() => {
+        api.deleteCard(cardId).then(() => {
+          card.deleteClick();
+          deletePopup.close();
+        });
+      });
+    },
   });
   return card.generateCard();
 }
@@ -166,9 +167,16 @@ const addFormModal = new PopupWithForm("#add-popup", (inputValues) => {
 });
 addFormModal.setEventListeners();
 
-const updateProfileForm = new PopupWithForm("avi-popup", (inputValues) => {
+const updateProfileForm = new PopupWithForm("#avi-popup", (inputValues) => {
   updateProfileForm.renderLoading(true);
-  api.updateProfilePicture(inputValues);
+  api.updateProfilePicture(inputValues).then((value) => {
+    userInfoEl.setAvatarInfo(value);
+  });
+});
+
+const profileEdit = document.querySelector(".profile__image");
+profileEdit.addEventListener("click", () => {
+  updateProfileForm.open();
 });
 
 const imagePopup = new PopupWithImage("#preview-popup");
