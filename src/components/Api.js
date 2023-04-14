@@ -4,7 +4,7 @@ export default class Api {
     this._headers = headers;
   }
 
-  _checkResponse() {
+  _checkResponse(res) {
     if (res.ok) {
       return res.json();
     }
@@ -15,10 +15,7 @@ export default class Api {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "GET",
       headers: this._headers,
-    }).then((res) => {
-      console.log(res);
-      return res.json();
-    });
+    }).then(this._checkResponse);
   }
 
   getAppInfo() {
@@ -29,10 +26,7 @@ export default class Api {
     return fetch(`${this._baseUrl}/cards`, {
       method: "GET",
       headers: this._headers,
-    }).then((res) => {
-      console.log(res);
-      return res.json();
-    });
+    }).then(this._checkResponse);
   }
 
   editProfile({ name, description }) {
@@ -43,10 +37,7 @@ export default class Api {
         name: name,
         about: description,
       }),
-    }).then((res) => {
-      console.log(res);
-      return res.json();
-    });
+    }).then(this._checkResponse);
   }
 
   addNewCard({ name, link }) {
@@ -57,50 +48,35 @@ export default class Api {
         name,
         link,
       }),
-    }).then((res) => {
-      console.log(res);
-      return res.json();
-    });
+    }).then(this._checkResponse);
   }
 
   cardLikes(cardId) {
     return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
       method: "PUT",
       headers: this._headers,
-    }).then((res) => {
-      console.log(res);
-      return res.json();
-    });
+    }).then(this._checkResponse);
   }
 
   deleteCard(cardID) {
     return fetch(`${this._baseUrl}/cards/${cardID}`, {
       method: "DELETE",
       headers: this._headers,
-    }).then((res) => {
-      console.log(res);
-      return res.json();
-    });
+    }).then(this._checkResponse);
   }
 
   addLike({ _id }) {
     return fetch(`${this._baseUrl}/cards/likes/${_id}`, {
       method: "PUT",
       headers: this._headers,
-    }).then((res) => {
-      console.log(res);
-      return res.json();
-    });
+    }).then(this._checkResponse);
   }
 
   removeLike({ _id }) {
     return fetch(`${this._baseUrl}/cards/likes/${_id}`, {
       method: "DELETE",
       headers: this._headers,
-    }).then((res) => {
-      console.log(res);
-      return res.json();
-    });
+    }).then(this._checkResponse);
   }
 
   updateProfilePicture(avatar) {
@@ -108,10 +84,7 @@ export default class Api {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify(avatar),
-    }).then((res) => {
-      console.log(res);
-      return res.json();
-    });
+    }).then(this._checkResponse);
   }
 
   // other methods for working with the API
