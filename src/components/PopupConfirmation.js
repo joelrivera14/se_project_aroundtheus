@@ -15,6 +15,13 @@ export default class PopupWithConfirmation extends Popup {
       this._handleDeleteSubmit();
     });
   }
+  renderLoading(isLoading) {
+    if (isLoading) {
+      this._confirmButton.textContent = "Saving...";
+    } else {
+      this._confirmButton.textContent = "yes";
+    }
+  }
 
   setSubmitAction(action) {
     this._handleDeleteSubmit = action;

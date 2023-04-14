@@ -96,6 +96,7 @@ function createCard(data) {
     handleDeleteCard: (cardId) => {
       deletePopup.open();
       deletePopup.setSubmitAction(() => {
+        deletePopup.renderLoading(true);
         api
           .deleteCard(cardId)
           .then(() => {
@@ -104,6 +105,9 @@ function createCard(data) {
           })
           .catch((err) => {
             console.log(err);
+          })
+          .finally(() => {
+            deletePopup.renderLoading(false);
           });
       });
     },
