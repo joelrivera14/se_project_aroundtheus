@@ -4,6 +4,13 @@ export default class Api {
     this._headers = headers;
   }
 
+  _checkResponse() {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Error ${res.status}`);
+  }
+
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "GET",
