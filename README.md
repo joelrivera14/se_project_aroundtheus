@@ -10,6 +10,6 @@ JavaScript
 Form validation
 JavaScript classes
 Webpack
-REST API
+REST APIv
 
 link to project three! ---> https://joelrivera14.github.io/se_project_aroundtheus/
