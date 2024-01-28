@@ -1,6 +1,12 @@
 # Project 3: Around The U.S.
 
-This is Practicums (now TripleTen) project four - nine. I started this project simply just building out the layout first, slowly adding more JavaScript functionality as I progressed through the courses sprints. As I progressed, there was the addition of forms and form validtation, RESTful API's, and there was a change in structure; going from functional programing to OOP.
+# Overview:
+
+This is Practicums (now TripleTen) project four - nine. It is meant to allow the user to upload images as well as see images uploaded by other users and it allows for the interactivity of images uploaded.
+
+# Functionality:
+
+I started this project simply just building out the layout first with grid and flexbox and making sure the web page was responsive. I slowly added more JavaScript functionality as I progressed through the courses sprints. As I progressed, there was the addition of forms and form validation, a like/dislike feature, an image deletion feature, the use of RESTful API's, and there was a change in structure; going from functional programing to OOP.
 
 # Technologies:
 
