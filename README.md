@@ -4,14 +4,14 @@ This is Practicums (now TripleTen) project four - nine. I started this project s
 
 # Technologies: <br>
 
-    Semantic HTML <br>
-    CSS grid<br>
-    CSS media queries<br>
-    Responsive web design<br>
-    JavaScript<br>
-    Form validation<br>
-    JavaScript classes<br>
-    Webpack<br>
+    Semantic HTML
+    CSS grid
+    CSS media queries
+    Responsive web design
+    JavaScript
+    Form validation
+    JavaScript classes
+    Webpack
     REST API
 
 link to project three! ---> https://joelrivera14.github.io/se_project_aroundtheus/
